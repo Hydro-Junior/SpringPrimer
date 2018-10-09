@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+	
+	<!--开启AOP的操作,自动代理 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<!-- 1.配置对象 -->
+	<bean id="book" class="com.xjy.springAOPAnno.Book"></bean>
+	<bean id="mybook" class="com.xjy.springAOPAnno.Mybook"></bean>
+</beans>

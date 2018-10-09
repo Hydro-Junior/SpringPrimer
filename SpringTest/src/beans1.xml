@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- ioc入门 -->
+	<!--  bean的属性scope：singleton(单例),prototype（多例），request，session,globalSession -->
+	<bean id="user" class="com.xjy.springBean.User" scope = "prototype">
+		<!-- 使用有参构造注入 -->
+		<!-- <constructor-arg name="name" value="Jack"></constructor-arg> -->
+		<!-- set注入 -->
+		<property name="name" value="Robbin"></property>
+		<!-- 注入其他复杂类型  -->
+		<property name="userArray">
+			<list>
+				<value>America</value>
+				<value>China</value>
+				<value>Japan</value>
+			</list>
+		</property>
+		<property name="userList">
+			<list>
+				<value>小王</value>
+				<value>小红</value>
+				<value>小明</value>
+			</list>
+		</property>
+		<property name="userMap">
+			<map>
+				<entry key="a" value="Lucy"></entry>
+				<entry key="b" value="Mary"></entry>
+				<entry key="c" value="Angila"></entry>
+			</map>
+		</property>
+		<property name="userProperties">
+			<props>
+				<prop key="diverClass">com.mysql.jdbc.Driver</prop>
+				<prop key="userName" >root</prop>
+				<prop key="passWord">123</prop>
+			</props>
+		</property>
+		
+	</bean>
+	<!-- 注入对象类型，配置service和dao对象,ref关键字 -->
+	<bean id="userDao" class="com.xjy.springBean.UserDao"></bean>
+	<bean id="userService" class="com.xjy.springBean.UserService">
+		<property name="dao" ref="userDao"></property>
+	</bean>
+</beans>

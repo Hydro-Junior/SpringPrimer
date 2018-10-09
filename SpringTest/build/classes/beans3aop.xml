@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+	<!-- 1.configure the object -->
+	<bean id="book" class="com.xjy.springAOP.Book"></bean>
+	<bean id="mybook" class="com.xjy.springAOP.MyBook"></bean>
+	<!-- 2.configure AOP  -->
+	<aop:config>
+		<!--2.1 configure pointCut  -->
+		<aop:pointcut expression="execution(* com.xjy.springAOP.Book.add(..))" id="pointcut1"></aop:pointcut>
+		<!--2.2 aspect -->
+		<aop:aspect ref="mybook">
+			<!-- configure the type the advice -->
+			<aop:before method="before1" pointcut-ref="pointcut1"></aop:before>
+			<aop:after method="after1" pointcut-ref="pointcut1"></aop:after>
+			<aop:around method="around1" pointcut-ref="pointcut1"></aop:around>
+		</aop:aspect>
+		
+	</aop:config>
+		
+</beans>
